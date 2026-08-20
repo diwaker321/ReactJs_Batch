@@ -1,15 +1,17 @@
-const FoodCard = () => {
+const FoodCard = (props) => {
+  console.log(props);
+  
   return (
     <>
       <div className="foodcard">
         <div className="imgdiv">
           <img
-            src="https://www.themealdb.com/images/media/meals/yleo1y1784839077.jpg"
+            src={props.Foodimg}
             alt=""
           />
         </div>
         <div className="foodname">
-          <p>Honey Cookies</p>
+          <p>{props.Foodname}</p>
         </div>
       </div>
     </>
