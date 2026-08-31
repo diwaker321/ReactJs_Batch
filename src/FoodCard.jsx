@@ -1,17 +1,25 @@
-const FoodCard = (props) => {
-  console.log(props);
+const FoodCard = (fooditem) => {
+  console.log(fooditem);
+  const {Foodimg , Foodname , category , discount , price , rating } = fooditem
   
   return (
     <>
       <div className="foodcard">
         <div className="imgdiv">
           <img
-            src={props.Foodimg}
+            src={Foodimg}
             alt=""
           />
         </div>
         <div className="foodname">
-          <p>{props.Foodname}</p>
+          <p>{Foodname}</p>
+        </div>
+        <div className="foodDetails">
+          <p>{category}</p>
+          <span>flat {discount} discount</span>
+          <p>${price}</p>
+          <p>{rating}</p>
+
         </div>
       </div>
     </>
