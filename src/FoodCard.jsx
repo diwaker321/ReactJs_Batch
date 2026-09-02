@@ -1,6 +1,6 @@
-const FoodCard = (fooditem) => {
-  console.log(fooditem);
-  const {Foodimg , Foodname , category , discount , price , rating } = fooditem
+const FoodCard = (props) => {
+  // console.log(props);
+  const {Foodimg , Foodname , category , discount , price , rating } = props.fooditem
   
   return (
     <>
