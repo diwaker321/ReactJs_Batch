@@ -1,7 +1,8 @@
+import { useState } from "react";
 import FoodCard from "./FoodCard";
 
 const Body = () => {
-  const fooditems = [
+  let fooditems = [
     {
       id: 1,
       Foodimg:
@@ -132,22 +133,31 @@ const Body = () => {
       price: 799,
     },
   ];
+  const [filteritems , setfilteritems ] = useState(fooditems)
+  // console.log(filteritems);
+
+  console.log("called again");
+  
+  
 
   function handleclick() {
-    const filterRes = fooditems.filter((res) => res.rating >= 4.5);
-    console.log(filterRes);
+    let filterRes = fooditems.filter((res) => res.rating >= 4.5);
+    // fooditems = filterRes;
+    setfilteritems(filterRes)
+    
+    // console.log(filterRes);
   }
 
   return (
     <>
       <div className="btn-section">
         <button className="btn" onClick={handleclick}>
-          Top restaurent
+          Top restaurent 
         </button>
       </div>
 
       <div className="bodycont">
-        {fooditems.map((res) => (
+        {filteritems.map((res) => (
           <FoodCard key={res.id} fooditem={res} />
         ))}
       </div>
