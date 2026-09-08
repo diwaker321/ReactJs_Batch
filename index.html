@@ -1,62 +1,144 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <style>
-      #head {
-        color: red;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="header">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+  <style>
+    #head {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div id="header">
       <h1>header</h1>
-    </div>
-    <div id="root">
-    </div>  
-    <div id="footer">
+    </div> -->
+  <div id="root">
+  </div>
+  <!-- <div id="footer">
       footer
-    </div>
-    
+    </div> -->
 
-    </div>
-  </body>
 
-  <!-- <div id="parent">
+  </div>
+</body>
+
+<div class="maincontainer">
+  <div class="header">
+    <!-- code  -->
+  </div>
+
+  <div class="bodysection">
+    <div class="upperbody"></div>
+    <div class="lowerbody"></div>
+  </div>
+
+  <div class="footersection">
+    <div class="upperfooter"></div>
+    <div class="lowerfooter"></div>
+  </div>
+</div>
+
+<!-- <div id="parent">
     <div id="childone">
       <h1>head one</h1>
+      <h1> head two </h1>
+    </div>
+
+    <div id="childtwo">
+      <h1>head one</h1>
+      <h1> head two </h1>
+    </div>
+
+    <div id="childtwo">
+      <h1>head one</h1>
+      <h1> head two </h1>
+    </div>
+    <div id="childtwo">
+      <h1>head one</h1>
+      <h1> head two </h1>
+    </div>
+    <div id="childtwo">
+      <h1>head one</h1>
+      <h1> head two </h1>
+    </div>
+    <div id="childtwo">
+      <h1>head one</h1>
+      <h1> head two </h1>
+    </div>
+    <div id="childtwo">
+      <h1>head one</h1>
+      <h1> head two </h1>
+    </div>
+    <div id="childtwo">
+      <h1>head one</h1>
+      <h1> head two </h1>
+    </div>
+    <div id="childtwo">
+      <h1>head one</h1>
+      <h1> head two </h1>
+    </div>
+    <div id="childtwo">
+      <h1>head one</h1>
+      <h1> head two </h1>
+    </div>
+    <div id="childtwo">
+      <h1>head one</h1>
+      <h1> head two </h1>
     </div>
   </div> -->
 
-  <!-- <h1>hello world</h1> -->
+<!-- <h1>hello world</h1> -->
 <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
-  <script>
-    const parent = React.createElement(
+<script>
+
+  const nestingcontainer = React.createElement("div", { id: "parent" }, 
+  [
+  React.createElement("div", { id: 'childone' }, [React.createElement("h1", {}, "head one"),
+  React.createElement("p", {}, "head two")]), React.createElement("div", { id: 'childtwo' }, 
+  [React.createElement("h1", {}, "head one"), React.createElement("p", {}, "head two")])])
+
+
+  console.log(nestingcontainer);
+
+
+
+  const parent = React.createElement(
+    "div",
+    { id: "parent" },
+    React.createElement(
       "div",
-      { id: "parent" },
-      React.createElement(
-        "div",
-        { id: "child" },
-        React.createElement("h1", {}, "head one"),
-      ),
-    );
+      { id: "child" },
+      React.createElement("h1", {}, "head one"),
+    ),
+  );
 
-    const h1 = React.createElement("h1",{class:"head"},"hello world")
+  const h1 = React.createElement("h1", { class: "head" }, "hello world")
 
-    // const headjsx = <h1>hello world</h1>;
-    // console.log("parent: ", parent);
+  const headone = <h1> head one </h1> // jsx syntax to make an element
 
-    const root = ReactDOM.createRoot(document.getElementById("root"));
-    root.render(h1);  
-    // root.render(parent);  
-    
-  </script>
+  const maincontainer = <div id="childtwo">
+                          <h1>head one</h1>
+                         <h1> head two </h1>
+                         
+                         </div> // jsx
 
-  <!-- <script type="module" src="./App.jsx"></script> -->
+  // const headjsx = <h1>hello world</h1>;
+  // console.log("parent: ", parent);
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+
+  root.render(nestingcontainer)
+
+
+</script>
+
+<!-- <script type="module" src="./App.jsx"></script> -->
 
 </html>
