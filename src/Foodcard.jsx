@@ -2,7 +2,7 @@ const Foodcard = (props) => {
   //object destructure
   //objects and loops using map function in js 
   const {foodimg ,foodname , price , duration , rating  } = props.foodDetails
-    console.log(props);
+    // console.log(props);
     
   return (
     <>
