@@ -1,23 +1,18 @@
-const Foodcard = (props) => {
-  //object destructure
-  //objects and loops using map function in js 
-  const {foodimg ,foodname , price , duration , rating  } = props.foodDetails
-    // console.log(props);
+const Foodcard = (props) => { 
+  const {strCategoryThumb ,strCategory } = props.foodDetails
+
     
   return (
     <>
-      <div>
-        <div className="imgsection w-50">
+      <div className=" p-5 rounded-md shadow-lg cursor-pointer">
+        <div className="imgsection w-60">
           <img
-            src={foodimg}
+            src={strCategoryThumb}
             alt=""
           />
         </div>
-        <div className="contentsection">
-          <p>{foodname}</p>
-          <p>{price}</p>
-          <p>{duration}</p>
-          <p>{rating} rating</p>
+        <div className="contentsection text-center">
+          <p>{strCategory}</p>
         </div>
       </div>
     </>
