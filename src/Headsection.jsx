@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const Headsection = () => {
   return (
     <>
@@ -9,10 +11,13 @@ const Headsection = () => {
       <div className="rightsection flex items-center gap-5">
 
         <div className="btn bg-red-700 hover:bg-red-600 transition-all px-2 py-1 rounded-md cursor-pointer">
-          <p className="text-white ">Home</p>
+          <Link to="/"> <p className="text-white ">Home</p> </Link>
         </div>
 
-        <p className="text-white">API</p>
+        <Link to="/about"><p className="text-white cursor-pointer">About</p> </Link>
+        <Link to="/contact"> <p className="text-white cursor-pointer">Contact</p> </Link>
+        <Link> <p className="text-white cursor-pointer">Login</p> </Link>
+
 
         <input className="bg-white py-1 px-2 rounded-md" type="text" placeholder="Search Your Meal" />
       </div>
