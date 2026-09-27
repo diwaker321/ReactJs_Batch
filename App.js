@@ -8,6 +8,7 @@ import About from "./src/About";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 import Contact from "./src/Contact";
 import Error from "./src/Error";
+import CategoryMeals from "./src/CategoryMeals";
 const App = () => {
   return (
     <>
@@ -40,6 +41,10 @@ const appRouter = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+      {
+        path:"/category/:mealname",
+        element:<CategoryMeals/>
+      }
     ],
   },
 ]);
