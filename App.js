@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import Headsection from "./src/Headsection";
 import Bodysection from "./src/Bodysection";
@@ -11,12 +11,14 @@ import Error from "./src/Error";
 import CategoryMeals from "./src/CategoryMeals";
 import MealDetails from "./src/MealDetails";
 const App = () => {
+  const [ searchData , setSearchData] = useState(null)
+  console.log(searchData);
+  
   return (
     <>
       <div>
-        <Headsection />
-        {/* <Contact/> "/contact" */}
-        <Outlet/>
+        <Headsection setSearchData={setSearchData} />
+        <Outlet />
         <Footersection />
       </div>
     </>

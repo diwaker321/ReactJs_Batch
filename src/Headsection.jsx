@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
-const Headsection = () => {
-  const [search, setSearch] = useState("");
+const Headsection = ({setSearchData}) => {
+  const [search, setSearch] = useState(""); // controlled component--> track uservalue
+  
+  //uncontrolled component--> track nhi kr pate ho uservalue--> useRef()
 
   async function handleSearch() {
     if(!search.trim()){
@@ -10,7 +12,8 @@ const Headsection = () => {
     }
     const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
     const data = await res.json()
-    console.log(data);
+    console.log(data?.meals);
+    setSearchData(data?.meals)
     setSearch("")
   }
   return (
