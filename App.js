@@ -12,14 +12,14 @@ import CategoryMeals from "./src/CategoryMeals";
 import MealDetails from "./src/MealDetails";
 const App = () => {
   const [ searchData , setSearchData] = useState(null)
-  console.log(searchData);
+  // console.log(searchData);
   
   return (
     <>
       <div>
         <Headsection setSearchData={setSearchData} />
-        <Outlet />
-        <Footersection />
+        <Outlet context={{searchData}} />
+        {/* <Footersection /> */}
       </div>
     </>
   );
