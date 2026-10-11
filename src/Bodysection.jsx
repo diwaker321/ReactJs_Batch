@@ -3,16 +3,15 @@ import { useEffect, useState } from "react";
 import Foodcard from "./Foodcard";
 import { foodData } from "../utils/constant";
 import Skeleton from "./Skeleton";
-import { useOutletContext } from "react-router";
+import { useNavigate, useOutletContext } from "react-router";
 
 const Bodysection = () => {
   // const [categorydata, setcategorydata] = useState(foodData);
   const [categorydata, setcategorydata] = useState(null);
+  const navigate = useNavigate();
 
-  const {searchData} = useOutletContext();
+  const { searchData } = useOutletContext();
   console.log(searchData);
-  
-
 
   async function getCategoryMeals() {
     const json_res = await fetch(
@@ -26,27 +25,51 @@ const Bodysection = () => {
   useEffect(() => {
     getCategoryMeals();
   }, []);
+
+  function handleSearchMeal(id) {
+    navigate(`/mealDetails/${id}`);
+  }
   return (
     <>
       <div className="bodysection   m-4">
-        <button
-          className="ms-4 mb-5 p-2 rounded-md cursor-pointer bg-red-700 hover:bg-red-600 text-white border"
-        >
+        <button className="ms-4 mb-5 p-2 rounded-md cursor-pointer bg-red-700 hover:bg-red-600 text-white border">
           Top Restaurent
         </button>
 
-        <div className="flex flex-wrap gap-5  justify-around">
-          {/* {categorydata.map((res, index) => (
+        {/* {categorydata.map((res, index) => (
             <Foodcard key={index} foodDetails={res} />
-          ))} */}
-          {categorydata == null ? (
-            <Skeleton />
-          ) : (
-            categorydata.map((res, index) => (
-              <Foodcard key={index} foodDetails={res} />
-            ))
-          )}
-        </div>
+            ))} */}
+            {searchData==null ? ( <h1>category wala code </h1>) : (<h1>search data wala code</h1>)}
+        {searchData == null ? (
+          <div className="flex flex-wrap gap-5  justify-around">
+            {categorydata == null ? (
+              <Skeleton />
+            ) : (
+              categorydata.map((res, index) => (
+                <Foodcard key={index} foodDetails={res} />
+              ))
+            )}
+          </div>
+        ) : (
+          <div className="flex flex-wrap gap-5 justify-around">
+            {searchData.map((res) => {
+              return (
+                <div
+                  onClick={() => handleSearchMeal(res.idMeal)}
+                  className="searchMeal cursor-pointer p-5 rounded-md shadow-md hover:shadow-lg cursor-pointer w-60"
+                  key={res.idMeal}
+                >
+                  <div className="imgdiv">
+                    <img src={res.strMealThumb} className="w-50" alt="" />
+                  </div>
+                  <div className="contentdiv text-center pt-1">
+                    <h1>{res.strMeal}</h1>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </>
   );

@@ -14,7 +14,13 @@ const Headsection = ({setSearchData}) => {
     const data = await res.json()
     // console.log(data?.meals);
     setSearchData(data?.meals)
+    // setSearch("")
+  }
+
+  function handleSearchClear(){
     setSearch("")
+    // setSearchData(null)
+    
   }
   return (
     <>
@@ -55,6 +61,16 @@ const Headsection = ({setSearchData}) => {
           >
             Search
           </button>
+          {search && (
+
+          <button
+            onClick={handleSearchClear}
+            className="py-1 px-3 rounded-md cursor-pointer bg-gray-700 hover:bg-gray-600 text-white border-none"
+          >
+            Clear
+          </button>
+          )}
+
         </div>
       </div>
     </>
