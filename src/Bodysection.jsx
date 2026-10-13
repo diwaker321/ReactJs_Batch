@@ -11,7 +11,7 @@ const Bodysection = () => {
   const navigate = useNavigate();
 
   const { searchData } = useOutletContext();
-  console.log(searchData);
+  // console.log(searchData);
 
   async function getCategoryMeals() {
     const json_res = await fetch(
@@ -35,11 +35,6 @@ const Bodysection = () => {
         <button className="ms-4 mb-5 p-2 rounded-md cursor-pointer bg-red-700 hover:bg-red-600 text-white border">
           Top Restaurent
         </button>
-
-        {/* {categorydata.map((res, index) => (
-            <Foodcard key={index} foodDetails={res} />
-            ))} */}
-            {searchData==null ? ( <h1>category wala code </h1>) : (<h1>search data wala code</h1>)}
         {searchData == null ? (
           <div className="flex flex-wrap gap-5  justify-around">
             {categorydata == null ? (

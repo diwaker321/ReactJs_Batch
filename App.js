@@ -10,6 +10,7 @@ import Contact from "./src/Contact";
 import Error from "./src/Error";
 import CategoryMeals from "./src/CategoryMeals";
 import MealDetails from "./src/MealDetails";
+import AreaMeal from "./src/AreaMeal";
 const App = () => {
   const [ searchData , setSearchData] = useState(null)
   // console.log(searchData);
@@ -51,6 +52,10 @@ const appRouter = createBrowserRouter([
       {
         path:"/mealDetails/:mealid",
         element:<MealDetails/>
+      },
+      {
+        path:"/mealarea/:areaName",
+        element:<AreaMeal/>
       }
     ],
   },

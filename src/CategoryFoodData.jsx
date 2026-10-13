@@ -1,14 +1,13 @@
 import { useNavigate } from "react-router";
 
 const CategoryFoodData = (props) => {
-  console.log(props.foodDetails);
+  // console.log(props.foodDetails);
 
   const { idMeal, strCategory, strCountry, strMeal, strMealThumb } = props.foodDetails;
   
   const navigate = useNavigate()
 
   function handlemeal(){
-    console.log("clicked");
     navigate(`/mealDetails/${idMeal}`)
   }
   

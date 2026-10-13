@@ -5,13 +5,7 @@ const Foodcard = (props) => {
   const navigate = useNavigate()
 
   function handleCategory(){
-    console.log("clicked" , strCategory);
     navigate(`/category/${strCategory}`)
-    //dynamic route and navigate .
-    //  useNavigate
-    //concept of useParams (it is a hook)
-
-    
   }
 
     

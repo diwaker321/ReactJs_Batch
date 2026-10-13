@@ -1,19 +1,25 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Skeleton from "./Skeleton";
 
 const MealDetails = () => {
   const [meal, setmeal] = useState(null);
   const { mealid } = useParams();
-  console.log(meal?.[0]?.idMeal);
+  // console.log(meal?.[0]?.idMeal);
+  const navigate = useNavigate()
 
   async function getMeals() {
     const res = await fetch(
       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`,
     );
     const data = await res.json();
-    console.log(data?.meals);
+    // console.log(data?.meals);
     setmeal(data?.meals);
+  }
+
+  function handleAreaDish(){
+    navigate(`/mealarea/${meal?.[0]?.strArea}`)
+
   }
 
   useEffect(() => {
@@ -32,7 +38,7 @@ const MealDetails = () => {
               <h1 className="font-semibold">{meal?.[0]?.strMeal}</h1>
               <h1>{meal?.[0]?.strCategory}</h1>
               <h1>Country Dist :{meal?.[0]?.strArea}</h1>
-              <button className=" mb-5 p-2 rounded-md cursor-pointer bg-red-700 hover:bg-red-600 text-white border">
+              <button onClick={handleAreaDish} className=" mb-5 p-2 rounded-md cursor-pointer bg-red-700 hover:bg-red-600 text-white border">
                 Click for more {meal?.[0]?.strArea} dish
               </button>
             </div>
