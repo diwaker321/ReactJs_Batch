@@ -31,7 +31,7 @@ const Bodysection = () => {
   }
   return (
     <>
-      <div className="bodysection   m-4">
+      <div className="bodysection  p-4">
         <button className="ms-4 mb-5 p-2 rounded-md cursor-pointer bg-red-700 hover:bg-red-600 text-white border">
           Top Restaurent
         </button>

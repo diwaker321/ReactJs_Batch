@@ -49,3 +49,6 @@ const AreaMeal = () => {
   );
 };
 export default AreaMeal;
+
+// onClick={handlemeal}
+// onClick={()=>handlemeal(res?.idMeal)}
