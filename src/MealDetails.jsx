@@ -13,8 +13,9 @@ const MealDetails = () => {
       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`,
     );
     const data = await res.json();
-    console.log(data?.meals);
-    setmeal(data?.meals);
+    // console.log("original",data?.meals?.[0]);
+    // console.log("original",data);
+    setmeal(data?.meals?.[0]);
   }
 
   const ingredients = [];
@@ -22,21 +23,24 @@ const MealDetails = () => {
   const ingredientsObj = {};
 
   for (let i = 1; i <= 20; i++) {
-    const ingredient = meal?.[0]?.[`strIngredient${i}`]?.trim();
-    const measurement = meal?.[0]?.[`strMeasure${i}`]?.trim();
+    const ingredient = meal?.[`strIngredient${i}`]?.trim();
+    const measurement = meal?.[`strMeasure${i}`]?.trim();
+    // ingredient = "olive oil" //true
 
     if (ingredient) {
       ingredients.push(ingredient);
       measure.push(measurement);
-
+      //how to store elements in object.
       ingredientsObj[ingredient] = measurement;
     }
   }
 
   console.log(ingredientsObj);
+  console.log(Object.entries(ingredientsObj));
+  
 
   function handleAreaDish() {
-    navigate(`/mealarea/${meal?.[0]?.strArea}`);
+    navigate(`/mealarea/${meal?.strArea}`);
   }
 
   useEffect(() => {
@@ -51,21 +55,21 @@ const MealDetails = () => {
         <>
           <div className="mealdetails w-screen flex  gap-10 px-10  mt-10">
             <div className="leftmealdiv w-1/3">
-              <img src={meal?.[0]?.strMealThumb} className="w-2/3" alt="" />
+              <img src={meal?.strMealThumb} className="w-2/3" alt="" />
               <div className="ps-1">
-                <h1 className="font-semibold text-xl">{meal?.[0]?.strMeal}</h1>
+                <h1 className="font-semibold text-xl">{meal?.strMeal}</h1>
                 <h1 className="text-gray-500">
                   {" "}
-                  {meal?.[0]?.strCategory} Category{" "}
+                  {meal?.strCategory} Category{" "}
                 </h1>
                 <h1 className="text-gray-500 mb-1">
-                  Country Dish {meal?.[0]?.strArea}
+                  Country Dish {meal?.strArea}
                 </h1>
                 <button
                   onClick={handleAreaDish}
                   className=" mb-5 px-1 py-2 w-2/3 rounded-md cursor-pointer bg-red-700 hover:bg-red-600 text-white border"
                 >
-                  Click for more {meal?.[0]?.strArea} dish
+                  Click for more {meal?.strArea} dish
                 </button>
               </div>
             </div>
@@ -87,7 +91,7 @@ const MealDetails = () => {
               </div>
               <div className="instructions mt-10 ">
                 <h1 className="text-center pb-5 text-3xl font-semibold">Instructions</h1>
-                <h1>{meal?.[0]?.strInstructions}</h1>
+                <h1>{meal?.strInstructions}</h1>
               </div>
             </div>
           </div>
