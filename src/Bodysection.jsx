@@ -22,9 +22,14 @@ const Bodysection = () => {
     setcategorydata(data?.categories);
   }
 
+  // useEffect(() => {
+  //   getCategoryMeals();
+  // }, []); // empty dependancy array . it will run only once
+
+  
   useEffect(() => {
     getCategoryMeals();
-  }, []);
+  }, [searchData]); // dependancy array . it will run searchdata change perform
 
   function handleSearchMeal(id) {
     navigate(`/mealDetails/${id}`);

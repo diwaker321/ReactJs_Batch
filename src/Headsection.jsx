@@ -19,8 +19,7 @@ const Headsection = ({setSearchData}) => {
 
   function handleSearchClear(){
     setSearch("")
-    // setSearchData(null)
-    
+    setSearchData(null)
   }
   return (
     <>

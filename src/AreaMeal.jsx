@@ -19,7 +19,6 @@ const AreaMeal = () => {
   }, []);
 
     function handlemeal(id){
-    console.log("clicked");
     navigate(`/mealDetails/${id}`)
   }
   return (
@@ -52,3 +51,6 @@ export default AreaMeal;
 
 // onClick={handlemeal}
 // onClick={()=>handlemeal(res?.idMeal)}
+//usecontext and redux storage
+
+//dependancy useeffect  

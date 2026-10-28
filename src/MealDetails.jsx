@@ -7,6 +7,8 @@ const MealDetails = () => {
   const { mealid } = useParams();
   // console.log(meal?.[0]?.idMeal);
   const navigate = useNavigate();
+  console.log(meal?.strArea);
+  
 
   async function getMeals() {
     const res = await fetch(
@@ -35,8 +37,8 @@ const MealDetails = () => {
     }
   }
 
-  console.log(ingredientsObj);
-  console.log(Object.entries(ingredientsObj));
+  // console.log(ingredientsObj);
+  // console.log(Object.entries(ingredientsObj));
   
 
   function handleAreaDish() {
