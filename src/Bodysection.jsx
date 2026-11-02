@@ -1,7 +1,7 @@
 // import { foodData } from "../utils/constant";
 import { useEffect, useState } from "react";
 import Foodcard from "./Foodcard";
-import { foodData } from "../utils/constant";
+import { CATEGORY_API} from "../utils/constant";
 import Skeleton from "./Skeleton";
 import { useNavigate, useOutletContext } from "react-router";
 
@@ -14,9 +14,7 @@ const Bodysection = () => {
   // console.log(searchData);
 
   async function getCategoryMeals() {
-    const json_res = await fetch(
-      "https://www.themealdb.com/api/json/v1/1/categories.php",
-    );
+    const json_res = await fetch(CATEGORY_API);
     const data = await json_res.json();
     // console.log(data?.categories);
     setcategorydata(data?.categories);

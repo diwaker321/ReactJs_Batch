@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useNavigate, useOutletContext } from "react-router";
 
 const Foodcard = (props) => { 
   const {strCategoryThumb ,strCategory } = props.foodDetails
@@ -7,6 +7,11 @@ const Foodcard = (props) => {
   function handleCategory(){
     navigate(`/category/${strCategory}`)
   }
+
+  const { searchData } = useOutletContext();
+  console.log("foodcard section",searchData);
+  
+
 
     
   return (

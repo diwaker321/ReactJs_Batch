@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { SEARCH_API } from "../utils/constant";
 
 const Headsection = ({setSearchData}) => {
   const [search, setSearch] = useState(""); // controlled component--> track uservalue
@@ -10,7 +11,7 @@ const Headsection = ({setSearchData}) => {
     if(!search.trim()){
       return
     }
-    const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
+    const res = await fetch(`${SEARCH_API}${search}`)
     const data = await res.json()
     // console.log(data?.meals);
     setSearchData(data?.meals)
