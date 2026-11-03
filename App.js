@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Headsection from "./src/Headsection";
 import Bodysection from "./src/Bodysection";
@@ -11,17 +11,23 @@ import Error from "./src/Error";
 import CategoryMeals from "./src/CategoryMeals";
 import MealDetails from "./src/MealDetails";
 import AreaMeal from "./src/AreaMeal";
+import SearchContext from "./utils/SearchContext";
 const App = () => {
-  const [ searchData , setSearchData] = useState(null)
+  const [searchData, setSearchData] = useState(null);
   // console.log(searchData);
-  
+
   return (
     <>
-      <div>
+      {/* <div>
         <Headsection setSearchData={setSearchData} />
         <Outlet context={{searchData}} />
-        {/* <Footersection /> */}
-      </div>
+        <Footersection />
+      </div> */}
+
+      <SearchContext.Provider value={{searchData , setSearchData}}> 
+        <Headsection />
+        <Outlet />
+      </SearchContext.Provider>
     </>
   );
 };
@@ -33,8 +39,8 @@ const appRouter = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path:"/",
-        element: <Bodysection/>
+        path: "/",
+        element: <Bodysection />,
       },
       {
         path: "/about",
@@ -46,17 +52,17 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path:"/category/:mealname",
-        element:<CategoryMeals/>
+        path: "/category/:mealname",
+        element: <CategoryMeals />,
       },
       {
-        path:"/mealDetails/:mealid",
-        element:<MealDetails/>
+        path: "/mealDetails/:mealid",
+        element: <MealDetails />,
       },
       {
-        path:"/mealarea/:areaName",
-        element:<AreaMeal/>
-      }
+        path: "/mealarea/:areaName",
+        element: <AreaMeal />,
+      },
     ],
   },
 ]);
@@ -64,3 +70,8 @@ const appRouter = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(<RouterProvider router={appRouter} />);
+
+// useContext
+// create context - createContext()
+// context.Provider
+// useContext()

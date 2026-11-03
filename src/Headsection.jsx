@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
 import { SEARCH_API } from "../utils/constant";
+import SearchContext from "../utils/SearchContext";
 
-const Headsection = ({setSearchData}) => {
+const Headsection = () => {
   const [search, setSearch] = useState(""); // controlled component--> track uservalue
+  const {searchData , setSearchData} = useContext(SearchContext)
   
   //uncontrolled component--> track nhi kr pate ho uservalue--> useRef()
 

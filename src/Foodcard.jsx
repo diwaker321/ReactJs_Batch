@@ -7,13 +7,7 @@ const Foodcard = (props) => {
   function handleCategory(){
     navigate(`/category/${strCategory}`)
   }
-
-  const { searchData } = useOutletContext();
-  console.log("foodcard section",searchData);
-  
-
-
-    
+ 
   return (
     <>
       <div onClick={handleCategory} className=" p-5 rounded-md shadow-lg cursor-pointer">

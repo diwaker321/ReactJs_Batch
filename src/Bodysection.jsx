@@ -1,16 +1,18 @@
 // import { foodData } from "../utils/constant";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Foodcard from "./Foodcard";
 import { CATEGORY_API} from "../utils/constant";
 import Skeleton from "./Skeleton";
 import { useNavigate, useOutletContext } from "react-router";
+import SearchContext from "../utils/SearchContext";
 
 const Bodysection = () => {
   // const [categorydata, setcategorydata] = useState(foodData);
   const [categorydata, setcategorydata] = useState(null);
   const navigate = useNavigate();
 
-  const { searchData } = useOutletContext();
+  // const { searchData } = useOutletContext();
+  const {searchData} = useContext(SearchContext)
   // console.log(searchData);
 
   async function getCategoryMeals() {
